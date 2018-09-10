@@ -14,12 +14,15 @@
       <button (click)="setDeckSize(select)" class="btn-danger">Start new game</button>
     </div>
   </div>
-  <div *ngIf="gameStarted" class="gameholder">
-    <h1 *ngIf="gameWon">You won!</h1>
+  <div *ngIf="gameStarted">
+    <div *ngIf="gameWon">
+      <h1>You won!</h1>
+      <button (click)="restartGame()" class="btn-danger">Restart game</button>
+    </div>
     <div class="row">
       <div (click)="flipCheck(i)" *ngFor="let card of cards; index as i" class="col-6 col-md-3 card">
         <div *ngIf="card.isFlipped" class="icon-holder">
-          <img [src]="card.img" alt="">
+          <img [src]="card.img" alt="card">
         </div>
       </div>
     </div>

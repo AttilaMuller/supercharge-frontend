@@ -9,15 +9,16 @@ export class CardService {
 
   cardArrayChanged: Subject<Array<Card>> = new BehaviorSubject<Array<Card>>([]);
   cardArray: Card[] = [];
+
   cardImages = ['/assets/angular.png', '/assets/d3.png', '/assets/jenkins.png', '/assets/postcss.png',
                 '/assets/react.png', '/assets/redux.png', '/assets/sass.png', '/assets/supercharge.png',
                 '/assets/ts.png', '/assets/webpack.png'];
 
-  constructor() {
-    this.cardArray = this.cardImages.map(img => ({img: img, isFlipped: false, isFound: false}));
-    this.cardArray = [...this.cardArray, ...(this.cardArray.map(card => ({...card})))];
-    this.shuffle(this.cardArray);
-    this.cardArrayChanged.next(this.cardArray);
+  constructor() { }
+
+  setDeckSize(deckSize: number) {
+    this.cardImages = this.cardImages.slice(0, deckSize / 2);
+    this.resetAndShuffle();
   }
 
   flipCard(index: number) {
@@ -29,6 +30,13 @@ export class CardService {
     for (let cardIndex of indexArray) {
       this.cardArray[cardIndex].isFound = true;
     }
+    this.cardArrayChanged.next(this.cardArray);
+  }
+
+  resetAndShuffle() {
+    this.cardArray = this.cardImages.map(img => ({img: img, isFlipped: false, isFound: false}));
+    this.cardArray = [...this.cardArray, ...(this.cardArray.map(card => ({...card})))];
+    this.shuffle(this.cardArray);
     this.cardArrayChanged.next(this.cardArray);
   }
 

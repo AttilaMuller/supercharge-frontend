@@ -12,14 +12,32 @@ export class BoardComponent implements OnInit {
   indexOfFlipped: number[] = [];
   gameWon = false;
   gameStarted = false;
+  deckSizes: number[] = [];
+  deckSize = 0;
 
-  constructor(private cardService: CardService) { }
+  constructor(private cardService: CardService) {
+    this.addDeckNumbers();
+  }
 
   ngOnInit() {
     this.cardService.cardArrayChanged.subscribe(cards => this.cards = cards);
   }
 
-  flipCheck(cardIndex: number) {
+  addDeckNumbers() {
+    for (let i = 6; i <= 20; i++) {
+      if (i % 2 === 0) {
+        this.deckSizes.push(i);
+      }
+    }
+  }
+
+  setDeckSize(select: HTMLSelectElement) {
+    this.deckSize = parseInt(select.value);
+    this.cardService.setDeckSize(this.deckSize);
+    this.gameStarted = true;
+  }
+
+flipCheck(cardIndex: number) {
     if (this.cards[cardIndex].isFound) {
       return;
     } else if (this.indexOfFlipped.length === 0) {
@@ -30,7 +48,7 @@ export class BoardComponent implements OnInit {
       setTimeout(() => {
         if (this.cards[firstCardIndex].img === this.cards[secondCardIndex].img) {
           this.cardService.foundCards(this.indexOfFlipped);
-          if (this.cards.every(card => card.isFound)){
+          if (this.cards.every(card => card.isFound)) {
             this.gameWon = true;
           }
         } else {
@@ -45,5 +63,10 @@ export class BoardComponent implements OnInit {
   flipCard(cardIndex: number) {
     this.cardService.flipCard(cardIndex);
     this.indexOfFlipped.push(cardIndex);
+  }
+
+  restartGame() {
+    this.gameWon = false;
+    this.cardService.resetAndShuffle();
   }
 }

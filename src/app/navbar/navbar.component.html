@@ -1,3 +1,14 @@
-<p>
-  navbar works!
-</p>
+<div class="menu">
+  <div class="logo-wrapper">
+    <img class="logo" src="/assets/supercharge-logo.svg" alt="logo">
+    <h5>MEMORY GAME</h5>
+  </div>
+  <div class="form-group">
+    <label for="deck-size">Deck size:</label>
+    <select class="form-control" id="deck-size" #select>
+      <option *ngFor="let size of deckSizes">{{size}}</option>
+    </select>
+    <button (click)="setDeckSize(select)" class="btn-primary">asd</button>
+  </div>
+  <div></div>
+</div>

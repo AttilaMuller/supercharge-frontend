@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  deckSizes: number[] = [];
+  deckSize = 0;
+
+  constructor() {
+    this.addDeckNumbers();
+  }
 
   ngOnInit() {
   }
 
+  addDeckNumbers() {
+    for (let i = 6; i <= 20; i++) {
+      this.deckSizes.push(i);
+    }
+  }
+
+  setDeckSize(select: HTMLSelectElement) {
+    this.deckSize = parseInt(select.value);
+  }
 }

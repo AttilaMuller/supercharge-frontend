@@ -1,0 +1,49 @@
+.menu {
+  background: black;
+  color: white;
+  text-align: center;
+  height: 50px;
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.logo-wrapper {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 3px;
+}
+
+.logo-wrapper h5{
+  float: right;
+  padding: 7px;
+}
+
+.logo {
+  width: 40px;
+}
+
+.logo path {
+  fill: #000;
+}
+
+.form-control {
+  width: 70px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group label {
+  padding: 7px;
+}
+
+.btn-primary {
+  margin-left: 5px;
+}

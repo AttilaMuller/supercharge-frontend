@@ -19,7 +19,9 @@ export class NavbarComponent implements OnInit {
 
   addDeckNumbers() {
     for (let i = 6; i <= 20; i++) {
-      this.deckSizes.push(i);
+      if (i % 2 === 0) {
+        this.deckSizes.push(i);
+      }
     }
   }
 

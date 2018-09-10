@@ -9,24 +9,29 @@
   box-shadow: #131313 3px 5px;
 }
 
+
 .card img {
-  width: 50px;
+width: 50px;
 }
 
 .card:hover {
-  cursor: pointer;
+cursor: pointer;
 }
 
 .row {
-  align-items: center;
+align-items: center;
 }
 .container {
-  text-align: center;
+text-align: center;
+}
+
+.title-holder {
+  padding-top: 100px;
 }
 
 h5, h1 {
-  padding: 30px;
-  color: black;
+padding: 30px;
+color: black;
 }
 
 .icon-holder {
@@ -47,6 +52,28 @@ h5, h1 {
 .gameholder {
   padding-top: 20px;
 }
+
+.starter-text {
+  text-align: center;
+}
+
+.selection {
+  padding-bottom: 5px;
+}
+
+.form-group label{
+  font-size: 15px;
+  color: gray;
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control {
+  width: 70px;
+}
+
 
 @keyframes flip {
   0% {transform: scaleX(-1); opacity: 0;}

@@ -34,11 +34,6 @@
   width: 70px;
 }
 
-.form-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .form-group label {
   padding: 7px;

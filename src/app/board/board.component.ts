@@ -11,6 +11,7 @@ export class BoardComponent implements OnInit {
   cards: Card[];
   indexOfFlipped: number[] = [];
   gameWon = false;
+  gameStarted = false;
 
   constructor(private cardService: CardService) { }
 

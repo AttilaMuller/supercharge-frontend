@@ -1,5 +1,20 @@
 <div class="container">
-  <div class="gameholder">
+  <div class="starter-text" *ngIf="!gameStarted">
+    <div class="title-holder">
+      <h2>SUPERCHARGE</h2>
+      MEMORY GAME
+    </div>
+    <div class="form-group">
+      <label for="deck-size">Deck size:</label>
+      <div class="selection">
+        <select  id="deck-size" #select>
+          <option *ngFor="let size of deckSizes">{{size}}</option>
+        </select>
+      </div>
+      <button (click)="setDeckSize(select)" class="btn-danger">Start new game</button>
+    </div>
+  </div>
+  <div *ngIf="gameStarted" class="gameholder">
     <h1 *ngIf="gameWon">You won!</h1>
     <div class="row">
       <div (click)="flipCheck(i)" *ngFor="let card of cards; index as i" class="col-6 col-md-3 card">

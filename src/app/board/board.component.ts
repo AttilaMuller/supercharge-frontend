@@ -15,7 +15,7 @@ export class BoardComponent implements OnInit {
   constructor(private cardService: CardService) { }
 
   ngOnInit() {
-    this.cardService.cardArrayChanged.subscribe(cards => this.cards = cards)
+    this.cardService.cardArrayChanged.subscribe(cards => this.cards = cards);
   }
 
   flipCheck(cardIndex: number) {

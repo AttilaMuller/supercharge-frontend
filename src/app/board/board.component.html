@@ -1,6 +1,5 @@
 <div class="container">
-  <div class="container">
-    <h5 *ngIf="!gameWon">Memory game</h5>
+  <div class="gameholder">
     <h1 *ngIf="gameWon">You won!</h1>
     <div class="row">
       <div (click)="flipCheck(i)" *ngFor="let card of cards; index as i" class="col-6 col-md-3 card">
@@ -10,5 +9,5 @@
       </div>
     </div>
   </div>
-
 </div>
+

@@ -19,7 +19,10 @@
       <h1>You won!</h1>
       <button (click)="restartGame()" class="btn-danger">Restart game</button>
     </div>
-    <div class="row">
+    <div>
+      <h1>Try counter: {{tryCounter}}</h1>
+    </div>
+    <div class="row gameholder">
       <div (click)="flipCheck(i)" *ngFor="let card of cards; index as i" class="col-6 col-md-3 card">
         <div *ngIf="card.isFlipped" class="icon-holder">
           <img [src]="card.img" alt="card">

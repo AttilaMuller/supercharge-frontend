@@ -14,6 +14,7 @@ export class BoardComponent implements OnInit {
   gameStarted = false;
   deckSizes: number[] = [];
   deckSize = 0;
+  tryCounter = 0;
 
   constructor(private cardService: CardService) {
     this.addDeckNumbers();
@@ -37,12 +38,13 @@ export class BoardComponent implements OnInit {
     this.gameStarted = true;
   }
 
-flipCheck(cardIndex: number) {
+  flipCheck(cardIndex: number) {
     if (this.cards[cardIndex].isFound) {
       return;
     } else if (this.indexOfFlipped.length === 0) {
       this.flipCard(cardIndex);
     } else if (this.indexOfFlipped.length === 1 && this.indexOfFlipped[0] != cardIndex) {
+      this.tryCounter++;
       this.flipCard(cardIndex);
       const [firstCardIndex, secondCardIndex] = this.indexOfFlipped;
       setTimeout(() => {
@@ -67,6 +69,7 @@ flipCheck(cardIndex: number) {
 
   restartGame() {
     this.gameWon = false;
+    this.tryCounter = 0;
     this.cardService.resetAndShuffle();
   }
 }
